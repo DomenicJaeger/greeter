@@ -15,21 +15,20 @@ void main() {
   int? alter;
   var alterString = stdin.readLineSync();
 
-  print(geschlechtString.toString());
   if (alterString != null /*&& ageString is int*/) {
     alter = int.tryParse(alterString) ?? -1;
-    if (alter < 1) {
-      print('Bitte geben Sie ein gültiges Alter ein.');
-    }
     var gender = geschlechtString!.toLowerCase();
-    if (alter < 30 && alter > 0) {
-      print("Hallo $vornameString!");
-    } else if (gender == "maennlich" || gender == "mann") {
+    var quatsch = int.tryParse(gender);
+    if (alter < 1) return print('Bitte geben Sie ein gültiges Alter ein.');
+    if (alter < 30 && alter > 0) return print("Hallo $vornameString!");
+    if (quatsch is int) {
+      return print("Bitte geben Sie ein gültiges Geschlecht ein.");
+    }
+    if (gender == "maennlich" || gender == "mann") {
       (print("Hallo Herr $nameString!"));
     } else if (gender == "weiblich" || gender == "frau") {
       print("Hallo Frau $nameString!");
-    } else {
-      print("Bitte geben Sie einen gültigen Wert ein.");
     }
+    print("Hallo Person $vornameString $nameString.");
   }
 }
