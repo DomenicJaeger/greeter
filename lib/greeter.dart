@@ -18,7 +18,7 @@ void main() {
     nameString = stdin.readLineSync();
   }
   //Geschlecht wird eingegeben
-  print("Sind Sie maennlich oder weiblich?");
+  print("Sind Sie maennlich, weiblich oder divers?");
   var geschlechtString = stdin.readLineSync();
   //Solange ein leeres Eingabefeld abgeschickt wird, oder eine Zahl eingegeben wird, wird der Vorgang wiederholt
   while (geschlechtString == null ||
@@ -28,14 +28,14 @@ void main() {
     geschlechtString = stdin.readLineSync();
   }
   //Alter wird eingegeben
-  print("Wie alt sind Sie?");
+  print("Wie viel Jahre sind Sie alt?");
   int? alter;
   var alterString = stdin.readLineSync();
   //Solange ein leeres Eingabefeld abgeschickt wird, oder die Eingabe keine Zahl ist, wird der Vorgang wiederholt
   while (alterString == null ||
       alterString.isEmpty ||
       int.tryParse(alterString) == null) {
-    print(" Bitte Alter eingeben");
+    print(" Bitte Alter als Zahl eingeben");
     alterString = stdin.readLineSync();
   }
   alter = int.tryParse(alterString);
@@ -54,7 +54,10 @@ void main() {
       gender == "maedchen" ||
       gender == "w") {
     print("Hallo Frau $nameString!");
-  } else {
+  } else if (gender == "divers" || gender == "d") {
     print("Hallo $vornameString $nameString!");
+  } else {
+    print(
+        "Hallo $vornameString $nameString. Das Geschlecht $geschlechtString ist mir nicht bekannt.");
   }
 }
